@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.d10ng.dialog2.dialog.*
 import com.d10ng.dldialog2.databinding.ActivityMainBinding
+import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -62,6 +63,16 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
                 .setCanceledOnTouchOutside(false)
+        }
+
+        binding.btnDialog2JustLoading.setOnClickListener {
+            val dialog = JustLoadingDialog(this)
+            GlobalScope.launch {
+                delay(3000)
+                withContext(Dispatchers.Main) {
+                    dialog.dismiss()
+                }
+            }
         }
     }
 }

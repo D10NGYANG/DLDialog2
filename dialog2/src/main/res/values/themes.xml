@@ -17,6 +17,14 @@
         <item name="android:layout_margin">30dp</item>
     </style>
 
+    <!-- 加载中弹窗外框样式 -->
+    <style name="D10ng.Dialog2.Box.Style.JustLoading" parent="D10ng.Dialog2.Style.Normal">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@drawable/bg_dialog_just_loading</item>
+    </style>
+
     <!-- 标题外框样式 -->
     <style name="D10ng.Dialog2.Box.Style.Title" parent="D10ng.Dialog2.Style.Normal">
         <item name="android:layout_width">match_parent</item>

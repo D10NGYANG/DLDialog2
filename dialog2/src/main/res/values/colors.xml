@@ -15,4 +15,8 @@
     <color name="colorDialogContentText">#666666</color>
     <color name="colorDialogHintText">#999999</color>
     <color name="colorDialogErrorText">#FF0000</color>
+
+    <!-- JustLoadingDialog -->
+    <color name="colorJustLoadingDialogBackground">#97454545</color>
+    <color name="colorJustLoadingDialogProgress">#ffffff</color>
 </resources>

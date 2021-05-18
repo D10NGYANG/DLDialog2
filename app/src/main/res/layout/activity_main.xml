@@ -17,21 +17,24 @@
             android:id="@+id/btn_alert_dialog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Alert Dialog"
-            android:layout_margin="16dp"/>
+            android:text="Alert Dialog"/>
 
         <Button
             android:id="@+id/btn_dialog2_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="普通按钮弹窗"
-            android:layout_margin="16dp"/>
+            android:text="普通按钮弹窗"/>
 
         <Button
             android:id="@+id/btn_dialog2_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="输入框弹窗"
-            android:layout_margin="16dp"/>
+            android:text="输入框弹窗"/>
+
+        <Button
+            android:id="@+id/btn_dialog2_just_loading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="加载中弹窗"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>
