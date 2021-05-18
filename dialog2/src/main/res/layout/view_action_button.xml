@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="button0Text"
+            type="String" />
+        <variable
+            name="button1Text"
+            type="String" />
+        <variable
+            name="isHasButton0"
+            type="boolean" />
+        <variable
+            name="isHasButton1"
+            type="boolean" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        style="@style/D10ng.Dialog2.Box.Style.ActionButton"
+        android:visibility="@{isHasButton0 || isHasButton1? View.VISIBLE: View.GONE}">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_0"
+            style="@style/D10ng.Dialog2.Button.Style.Action0"
+            android:text="@{button0Text}"
+            tools:text="取消"
+            android:visibility="@{isHasButton0? View.VISIBLE: View.GONE}"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_1"
+            style="@style/D10ng.Dialog2.Button.Style.Action1"
+            android:text="@{button1Text}"
+            tools:text="确定"
+            android:visibility="@{isHasButton1? View.VISIBLE: View.GONE}"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

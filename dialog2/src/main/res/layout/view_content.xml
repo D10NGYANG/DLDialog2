@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="contentText"
+            type="String" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/ll_content"
+        style="@style/D10ng.Dialog2.Box.Style.Content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_content"
+            style="@style/D10ng.Dialog2.Text.Style.Content"
+            android:text="@{contentText}"
+            tools:text="您将会收到一条提示消息，请注意查看提示内容，以免发生误操作！" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>
