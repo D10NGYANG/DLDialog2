@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View"/>
+        <variable
+            name="isHasContent"
+            type="boolean" />
         <variable
             name="contentText"
             type="String" />
@@ -10,7 +14,8 @@
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/ll_content"
-        style="@style/D10ng.Dialog2.Box.Style.Content">
+        style="@style/D10ng.Dialog2.Box.Style.Content"
+        android:visibility="@{isHasContent? View.VISIBLE: View.GONE}">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txt_content"

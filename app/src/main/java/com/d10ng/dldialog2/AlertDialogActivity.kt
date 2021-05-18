@@ -17,7 +17,7 @@ class AlertDialogActivity : AppCompatActivity() {
 
         binding.btnNormal.setOnClickListener {
             MaterialAlertDialogBuilder(this)
-                /*.setTitle("标题")
+                .setTitle("标题")
                 .setMessage("文本")
                 .setNeutralButton("取消") { dialog, which ->
                     dialog.dismiss()
@@ -27,7 +27,7 @@ class AlertDialogActivity : AppCompatActivity() {
                 }
                 .setPositiveButton("接受") { dialog, which ->
                     dialog.dismiss()
-                }*/
+                }
                 .show()
         }
 

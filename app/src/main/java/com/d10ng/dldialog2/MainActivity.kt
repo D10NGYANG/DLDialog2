@@ -118,5 +118,24 @@ class MainActivity : AppCompatActivity() {
                 }
                 .setCanceledOnTouchOutside(false)
         }
+
+        binding.btnDialog2Progress.setOnClickListener {
+            val dialog = ProgressDialog(this)
+                .initView()
+                .setTitle("发送中", View.TEXT_ALIGNMENT_CENTER)
+                .setIsShowProgressText(true)
+                .setIsIndeterminate(false)
+                .setMax(100)
+                .setCurrentProgress(0)
+            GlobalScope.launch {
+                while (dialog.getProgress() != dialog.getMax()) {
+                    delay(100)
+                    withContext(Dispatchers.Main) {
+                        dialog.setCurrentProgress(dialog.getProgress() + 1)
+                    }
+                }
+                withContext(Dispatchers.Main) { dialog.dismiss() }
+            }
+        }
     }
 }

@@ -28,6 +28,8 @@ open class BaseDialogFragment constructor(
         // 初始化，没有按钮，只有添加以后才出现
         getActionButtonView()?.isHasButton0 = false
         getActionButtonView()?.isHasButton1 = false
+        // 没有文本内容，只有设置后才出现
+        getContentView()?.isHasContent = false
     }
 
     /**
@@ -92,6 +94,7 @@ fun <T : BaseDialogFragment> T.setContent(
     content: String,
     textAlignment: Int = View.TEXT_ALIGNMENT_TEXT_START
 ): T {
+    getContentView()?.isHasContent = true
     getContentView()?.contentText = content
     getContentView()?.txtContent?.textAlignment = textAlignment
     return this
@@ -107,8 +110,19 @@ fun <T : BaseDialogFragment> T.setContent(
     contentId: Int,
     textAlignment: Int = View.TEXT_ALIGNMENT_TEXT_START
 ): T {
+    getContentView()?.isHasContent = true
     getContentView()?.txtContent?.setText(contentId)
     getContentView()?.txtContent?.textAlignment = textAlignment
+    return this
+}
+
+/**
+ * 移除内容
+ * @receiver T
+ * @return T
+ */
+fun <T : BaseDialogFragment> T.removeContent(): T {
+    getContentView()?.isHasContent = false
     return this
 }
 

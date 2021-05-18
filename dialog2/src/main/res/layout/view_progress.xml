@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="isHasProgressText"
+            type="boolean" />
+        <variable
+            name="progressText"
+            type="String" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        style="@style/D10ng.Dialog2.Box.Style.View"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_progress"
+            style="@style/D10ng.Dialog2.Text.Style.Content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{progressText}"
+            tools:text="59%"
+            android:textSize="20sp"
+            android:visibility="@{isHasProgressText? View.VISIBLE: View.GONE}"/>
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/progressBar"
+            style="@style/Widget.MaterialComponents.LinearProgressIndicator"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="20dp"
+            android:indeterminate="true"
+            app:indicatorColor="@color/colorDialogTheme"
+            tools:progress="59" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

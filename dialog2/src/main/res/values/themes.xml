@@ -42,6 +42,13 @@
         <item name="android:paddingBottom">12dp</item>
     </style>
 
+    <!-- View外框样式 -->
+    <style name="D10ng.Dialog2.Box.Style.View" parent="D10ng.Dialog2.Box.Style.Title">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+
     <!-- 操作按钮外框样式 -->
     <style name="D10ng.Dialog2.Box.Style.ActionButton" parent="D10ng.Dialog2.Style.Normal">
         <item name="android:layout_width">match_parent</item>

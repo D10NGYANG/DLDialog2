@@ -48,5 +48,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="日期滚轮选择弹窗"/>
+
+        <Button
+            android:id="@+id/btn_dialog2_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="进度条弹窗"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>
