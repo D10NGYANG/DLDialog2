@@ -14,7 +14,7 @@ import com.d10ng.dialog2.databinding.DialogJustLoadingBinding
  * @Author: D10NG
  * @Time: 2021/5/18 1:56 PM
  */
-class JustLoadingDialog constructor(
+open class JustLoadingDialog constructor(
     act: AppCompatActivity,
     tag: String? = null
 ): BaseCenterDialogFragment(act, tag) {

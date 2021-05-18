@@ -14,6 +14,8 @@
         <item name="android:background">@drawable/bg_dialog_default</item>
         <item name="android:paddingTop">10dp</item>
         <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingStart">25dp</item>
+        <item name="android:paddingEnd">25dp</item>
         <item name="android:layout_margin">30dp</item>
     </style>
 
@@ -31,8 +33,6 @@
         <item name="android:layout_height">60dp</item>
         <item name="android:orientation">vertical</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:paddingStart">25dp</item>
-        <item name="android:paddingEnd">25dp</item>
     </style>
 
     <!-- 内容外框样式 -->
@@ -48,8 +48,6 @@
         <item name="android:layout_height">77dp</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:paddingStart">12.5dp</item>
-        <item name="android:paddingEnd">12.5dp</item>
     </style>
 
     <!-- 标题字体样式 -->
@@ -59,7 +57,7 @@
         <item name="android:ellipsize">end</item>
         <item name="android:singleLine">true</item>
         <item name="android:textColor">@color/colorDialogTitleText</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">@dimen/sizeTextTitle</item>
         <item name="android:textStyle">bold</item>
     </style>
 
@@ -68,9 +66,9 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/colorDialogContentText</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">@dimen/sizeTextContent</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:lineSpacingExtra">@dimen/sizeLineSpacingExtra</item>
     </style>
 
     <!-- 提示字体样式 -->
@@ -78,9 +76,9 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/colorDialogHintText</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">@dimen/sizeTextHint</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:lineSpacingExtra">@dimen/sizeLineSpacingExtra</item>
     </style>
 
     <!-- 错误字体样式 -->
@@ -88,9 +86,9 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/colorDialogErrorText</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">@dimen/sizeTextHint</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:lineSpacingExtra">@dimen/sizeLineSpacingExtra</item>
     </style>
 
     <!-- 操作按钮-取消样式 -->
@@ -99,9 +97,7 @@
         <item name="android:layout_height">40dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:background">@drawable/bg_button_0</item>
-        <item name="android:layout_marginStart">12.5dp</item>
-        <item name="android:layout_marginEnd">12.5dp</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">@dimen/sizeTextContent</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/colorDialogContentText</item>
     </style>
@@ -109,6 +105,7 @@
     <!-- 操作按钮-确定样式 -->
     <style name="D10ng.Dialog2.Button.Style.Action1" parent="D10ng.Dialog2.Button.Style.Action0">
         <item name="android:background">@drawable/bg_button_1</item>
+        <item name="android:layout_marginStart">25dp</item>
         <item name="android:textColor">@color/colorDialogOnTheme</item>
     </style>
 
@@ -118,7 +115,7 @@
         <item name="android:layout_height">40dp</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:textColor">@color/colorDialogContentText</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">@dimen/sizeTextContent</item>
         <item name="android:textStyle">normal</item>
         <item name="android:hint">请输入</item>
         <item name="android:textColorHint">@color/colorDialogHintText</item>
