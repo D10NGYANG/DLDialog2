@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.btnDialog2JustLoading.setOnClickListener {
-            val dialog = JustLoadingDialog(this)
+            val dialog = JustLoadingDialog(this).setCanceledOnTouchOutside(true)
             GlobalScope.launch {
                 delay(3000)
                 withContext(Dispatchers.Main) {
@@ -136,6 +136,23 @@ class MainActivity : AppCompatActivity() {
                 }
                 withContext(Dispatchers.Main) { dialog.dismiss() }
             }
+        }
+
+        binding.btnDialog2BottomAction.setOnClickListener {
+            val list = listOf("设置", "编辑")
+            ActionDialog(this)
+                .setCancel()
+                .addActionList(list) {
+                    onClick { dialog, action ->
+                        dialog.dismiss()
+                        if (action == ActionDialog.CLICK_CANCEL) {
+                            Toast.makeText(this@MainActivity, "你点击了取消", Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(this@MainActivity, "你点击了${list[action]}", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+                .setCanceledOnTouchOutside(false)
         }
     }
 }

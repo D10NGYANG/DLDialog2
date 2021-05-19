@@ -9,6 +9,7 @@
     <color name="colorDialogBackground">#FFFFFF</color>
     <color name="colorDialogNormalBackground">#666666</color>
     <color name="colorDialogActiveBackground">#333333</color>
+    <color name="colorDialogBottomActionBackground">#F2F3F4</color>
 
     <!-- 弹窗文字颜色 -->
     <color name="colorDialogTitleText">#333333</color>

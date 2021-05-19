@@ -8,18 +8,18 @@ import com.d10ng.dialog2.dialog.BaseDialogFragment
  * @Time: 2021/5/17 2:35 PM
  */
 interface OnButtonClick<T : BaseDialogFragment> {
-    fun click(dialog: T, button: Int)
+    fun click(dialog: T, action: Int)
 }
 
 class OnButtonClickListener<T : BaseDialogFragment>: OnButtonClick<T> {
 
-    private lateinit var onClickVal: (dialog: T, button: Int) -> Unit
+    private lateinit var onClickVal: (dialog: T, action: Int) -> Unit
 
-    fun onClick(listener: (dialog: T, button: Int) -> Unit) {
+    fun onClick(listener: (dialog: T, action: Int) -> Unit) {
         this.onClickVal = listener
     }
 
-    override fun click(dialog: T, button: Int) {
-        this.onClickVal.invoke(dialog, button)
+    override fun click(dialog: T, action: Int) {
+        this.onClickVal.invoke(dialog, action)
     }
 }

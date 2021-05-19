@@ -11,48 +11,55 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".MainActivity" >
+        tools:context=".MainActivity"
+        android:padding="16dp">
 
         <Button
             android:id="@+id/btn_alert_dialog"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Alert Dialog"/>
 
         <Button
             android:id="@+id/btn_dialog2_button"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="普通按钮弹窗"/>
 
         <Button
             android:id="@+id/btn_dialog2_edit"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="输入框弹窗"/>
 
         <Button
             android:id="@+id/btn_dialog2_just_loading"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="加载中弹窗"/>
 
         <Button
             android:id="@+id/btn_dialog2_roller_picker"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="滚轮选择弹窗"/>
 
         <Button
             android:id="@+id/btn_dialog2_date_roller_picker"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="日期滚轮选择弹窗"/>
 
         <Button
             android:id="@+id/btn_dialog2_progress"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="进度条弹窗"/>
+
+        <Button
+            android:id="@+id/btn_dialog2_bottom_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="底部任务弹窗"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

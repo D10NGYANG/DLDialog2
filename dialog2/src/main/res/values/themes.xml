@@ -16,7 +16,7 @@
         <item name="android:paddingBottom">10dp</item>
         <item name="android:paddingStart">25dp</item>
         <item name="android:paddingEnd">25dp</item>
-        <item name="android:layout_margin">30dp</item>
+        <item name="android:layout_margin">15dp</item>
     </style>
 
     <!-- 加载中弹窗外框样式 -->
@@ -47,6 +47,15 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingTop">8dp</item>
         <item name="android:paddingBottom">8dp</item>
+    </style>
+
+    <!-- 底部弹窗外框样式 -->
+    <style name="D10ng.Dialog2.Box.Style.Bottom.Action" parent="D10ng.Dialog2.Box.Style">
+        <item name="android:background">@drawable/bg_dialog_bottom_action</item>
+        <item name="android:paddingStart">0dp</item>
+        <item name="android:paddingEnd">0dp</item>
+        <item name="android:paddingTop">15dp</item>
+        <item name="android:paddingBottom">15dp</item>
     </style>
 
     <!-- 操作按钮外框样式 -->
@@ -96,6 +105,17 @@
         <item name="android:textSize">@dimen/sizeTextHint</item>
         <item name="android:textStyle">normal</item>
         <item name="android:lineSpacingExtra">@dimen/sizeLineSpacingExtra</item>
+    </style>
+
+    <!-- 底部按钮样式 -->
+    <style name="D10ng.Dialog2.Button.Style.BottomAction" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">42dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/sizeTextAction</item>
+        <item name="android:textColor">@color/colorDialogTitleText</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:background">@color/colorDialogBackground</item>
     </style>
 
     <!-- 操作按钮-取消样式 -->

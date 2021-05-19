@@ -22,7 +22,7 @@
                 android:id="@+id/view_content"
                 layout="@layout/view_content"/>
 
-            <LinearLayout
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/ll_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
