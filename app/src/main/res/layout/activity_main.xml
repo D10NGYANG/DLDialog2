@@ -61,5 +61,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="底部任务弹窗"/>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:lottie_fileName="lottie/loading/data.json"
+            app:lottie_imageAssetsFolder="lottie/loading/images"
+            app:lottie_loop="true"
+            app:lottie_autoPlay="true"
+            app:lottie_repeatMode="restart"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

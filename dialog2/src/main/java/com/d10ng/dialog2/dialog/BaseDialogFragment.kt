@@ -78,8 +78,7 @@ fun <T : BaseDialogFragment> T.setTitle(
     titleId: Int,
     textAlignment: Int = View.TEXT_ALIGNMENT_TEXT_START
 ): T {
-    getTitleView()?.txtTitle?.setText(titleId)
-    getTitleView()?.txtTitle?.textAlignment = textAlignment
+    setTitle(resources.getString(titleId), textAlignment)
     return this
 }
 
@@ -110,9 +109,7 @@ fun <T : BaseDialogFragment> T.setContent(
     contentId: Int,
     textAlignment: Int = View.TEXT_ALIGNMENT_TEXT_START
 ): T {
-    getContentView()?.isHasContent = true
-    getContentView()?.txtContent?.setText(contentId)
-    getContentView()?.txtContent?.textAlignment = textAlignment
+    setContent(resources.getString(contentId), textAlignment)
     return this
 }
 
@@ -151,6 +148,20 @@ fun <T : BaseDialogFragment> T.setButton0(
         }
     }
     return this
+}
+
+/**
+ * 设置取消按钮
+ * @receiver T
+ * @param textId Int
+ * @param onButtonClick [@kotlin.ExtensionFunctionType] Function1<OnButtonClickListener<T>, Unit>?
+ * @return T
+ */
+fun <T : BaseDialogFragment> T.setButton0(
+    textId: Int,
+    onButtonClick: (OnButtonClickListener<T>.() -> Unit)? = null
+): T {
+    return setButton0(resources.getString(textId), onButtonClick)
 }
 
 /**
@@ -193,6 +204,20 @@ fun <T : BaseDialogFragment> T.setButton1(
 }
 
 /**
+ * 设置确定按钮
+ * @receiver T
+ * @param textId Int
+ * @param onButtonClick [@kotlin.ExtensionFunctionType] Function1<OnButtonClickListener<T>, Unit>?
+ * @return T
+ */
+fun <T : BaseDialogFragment> T.setButton1(
+    textId: Int,
+    onButtonClick: (OnButtonClickListener<T>.() -> Unit)? = null
+): T {
+    return setButton1(resources.getString(textId), onButtonClick)
+}
+
+/**
  * 隐藏确定按钮
  * @receiver T
  * @return T
@@ -222,7 +247,7 @@ fun <T : BaseDialogFragment> T.setCanceledOnTouchOutside(value: Boolean): T {
  * @param tag String?
  * @return T
  */
-fun <T : BaseDialogFragment> T.show(act: AppCompatActivity, tag: String? = null): T {
+private fun <T : BaseDialogFragment> T.show(act: AppCompatActivity, tag: String? = null): T {
     // 设置样式，去掉弹窗本身自带的背景
     setStyle(DialogFragment.STYLE_NORMAL, R.style.D10ng_Dialog2_Style_Normal)
     showNow(act.supportFragmentManager, tag ?: System.currentTimeMillis().toString(16))

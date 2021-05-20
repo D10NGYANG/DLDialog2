@@ -29,6 +29,11 @@
             tools:text="取消"
             android:visibility="@{isHasButton0? View.VISIBLE: View.GONE}"/>
 
+        <View
+            android:layout_width="25dp"
+            android:layout_height="wrap_content"
+            android:visibility="@{isHasButton0 &amp;&amp; isHasButton1? View.VISIBLE: View.GONE}"/>
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_1"
             style="@style/D10ng.Dialog2.Button.Style.Action1"

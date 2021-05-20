@@ -26,9 +26,9 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnDialog2Button.setOnClickListener {
             ButtonDialog(this)
-                .setTitle("标题")
+                .setTitle(R.string.prompt)
                 .setContent("这是一句内容可以分行，还能多行；\n进行其他样式接入需要自己编写。\n\n-- 内容")
-                .setButton0("取消")
+                //.setButton0("取消")
                 .setButton1("确定") {
                     onClick { dialog, _ ->
                         dialog.dismiss()

@@ -3,6 +3,7 @@ package com.d10ng.dialog2.dialog
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.databinding.DataBindingUtil
 import com.d10ng.dialog2.R
 import com.d10ng.dialog2.databinding.ViewRollerPickerBinding
@@ -22,7 +23,7 @@ open class RollerPickerDialog constructor(
     override fun onStart() {
         super.onStart()
         // 改变内容排列方向
-        getCustomView().orientation = LinearLayout.HORIZONTAL
+        getCustomView().orientation = LinearLayoutCompat.HORIZONTAL
     }
 
     /** 选择项列表 */
