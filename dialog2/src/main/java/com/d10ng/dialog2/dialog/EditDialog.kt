@@ -33,18 +33,20 @@ open class EditDialog constructor(
      * @return EditDialog
      */
     fun addEdit(key: String, text: String, hint: String = "请输入") : EditDialog {
-        val viewBinding: ViewEditTextBinding = DataBindingUtil.inflate(
-            LayoutInflater.from(context),
-            R.layout.view_edit_text, null, false
-        )
-        viewBinding.apply {
-            edt.setText(text)
-            hintText = hint
-            isError = false
-            errorText = ""
+        delay2Created {
+            val viewBinding: ViewEditTextBinding = DataBindingUtil.inflate(
+                LayoutInflater.from(context),
+                R.layout.view_edit_text, null, false
+            )
+            viewBinding.apply {
+                edt.setText(text)
+                hintText = hint
+                isError = false
+                errorText = ""
+            }
+            getCustomView().addView(viewBinding.root)
+            bindingMap[key] = viewBinding
         }
-        getCustomView().addView(viewBinding.root)
-        bindingMap[key] = viewBinding
         return this
     }
 
@@ -53,9 +55,11 @@ open class EditDialog constructor(
      * @param key 标签
      */
     fun removeEdit(key: String) : EditDialog {
-        if (bindingMap[key] != null) {
-            getCustomView().removeView(bindingMap[key]?.root)
-            bindingMap.remove(key)
+        delay2Created {
+            if (bindingMap[key] != null) {
+                getCustomView().removeView(bindingMap[key]?.root)
+                bindingMap.remove(key)
+            }
         }
         return this
     }
@@ -66,7 +70,9 @@ open class EditDialog constructor(
      * @param type 类型
      */
     fun setInputType(key: String, type: Int) : EditDialog {
-        bindingMap[key]?.edt?.inputType = type
+        delay2Created {
+            bindingMap[key]?.edt?.inputType = type
+        }
         return this
     }
 
@@ -77,7 +83,9 @@ open class EditDialog constructor(
      * @return EditDialog
      */
     fun setInputMaxLength(key: String, length: Int): EditDialog {
-        bindingMap[key]?.edt?.filters = arrayOf(InputFilter.LengthFilter(length))
+        delay2Created {
+            bindingMap[key]?.edt?.filters = arrayOf(InputFilter.LengthFilter(length))
+        }
         return this
     }
 
@@ -95,8 +103,10 @@ open class EditDialog constructor(
      * @param value 信息
      */
     fun setError(key: String, value: String) : EditDialog {
-        bindingMap[key]?.isError = true
-        bindingMap[key]?.errorText = value
+        delay2Created {
+            bindingMap[key]?.isError = true
+            bindingMap[key]?.errorText = value
+        }
         return this
     }
 
@@ -106,8 +116,10 @@ open class EditDialog constructor(
      * @return EditDialog
      */
     fun clearError(key: String): EditDialog {
-        bindingMap[key]?.isError = false
-        bindingMap[key]?.errorText = ""
+        delay2Created {
+           bindingMap[key]?.isError = false
+           bindingMap[key]?.errorText = ""
+        }
         return this
     }
 }

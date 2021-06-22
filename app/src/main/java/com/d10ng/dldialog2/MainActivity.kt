@@ -154,5 +154,17 @@ class MainActivity : AppCompatActivity() {
                 }
                 .setCanceledOnTouchOutside(false)
         }
+
+        ButtonDialog(this)
+            .setTitle(R.string.prompt)
+            .setContent("这是一句内容可以分行，还能多行；\n进行其他样式接入需要自己编写。\n\n-- 内容")
+            //.setButton0("取消")
+            .setButton1("确定") {
+                onClick { dialog, _ ->
+                    dialog.dismiss()
+                    Toast.makeText(this@MainActivity, "你点击了确定", Toast.LENGTH_SHORT).show()
+                }
+            }
+            .setCanceledOnTouchOutside(false)
     }
 }

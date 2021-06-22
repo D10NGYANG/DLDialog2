@@ -59,15 +59,17 @@ class ActionDialog constructor(
         text: String = "取消",
         onButtonClick: (OnButtonClickListener<ActionDialog>.() -> Unit)? = null
     ): ActionDialog {
-        binding.cancelText = text
-        binding.isHasCancel = true
-        binding.btnCancel.setOnClickListener {
-            if (onButtonClick == null) {
-                dismiss()
-            } else {
-                val clickBuilder = OnButtonClickListener<ActionDialog>()
-                clickBuilder.onButtonClick()
-                clickBuilder.click(this, CLICK_CANCEL)
+        delay2Created {
+            binding.cancelText = text
+            binding.isHasCancel = true
+            binding.btnCancel.setOnClickListener {
+                if (onButtonClick == null) {
+                    dismiss()
+                } else {
+                    val clickBuilder = OnButtonClickListener<ActionDialog>()
+                    clickBuilder.onButtonClick()
+                    clickBuilder.click(this, CLICK_CANCEL)
+                }
             }
         }
         return this
@@ -83,24 +85,26 @@ class ActionDialog constructor(
         text: String,
         onButtonClick: (OnButtonClickListener<ActionDialog>.() -> Unit)? = null
     ): ActionDialog {
-        val viewBinding: ViewActionTextBinding = DataBindingUtil.inflate(
-            LayoutInflater.from(context),
-            R.layout.view_action_text, null, false
-        )
-        viewBinding.apply {
-            actionText = text
-            btnAction.setOnClickListener {
-                if (onButtonClick == null) {
-                    dismiss()
-                } else {
-                    val clickBuilder = OnButtonClickListener<ActionDialog>()
-                    clickBuilder.onButtonClick()
-                    clickBuilder.click(this@ActionDialog, bindingList.indexOf(this))
+        delay2Created {
+            val viewBinding: ViewActionTextBinding = DataBindingUtil.inflate(
+                LayoutInflater.from(context),
+                R.layout.view_action_text, null, false
+            )
+            viewBinding.apply {
+                actionText = text
+                btnAction.setOnClickListener {
+                    if (onButtonClick == null) {
+                        dismiss()
+                    } else {
+                        val clickBuilder = OnButtonClickListener<ActionDialog>()
+                        clickBuilder.onButtonClick()
+                        clickBuilder.click(this@ActionDialog, bindingList.indexOf(this))
+                    }
                 }
             }
+            getCustomView().addView(viewBinding.root)
+            bindingList.add(viewBinding)
         }
-        getCustomView().addView(viewBinding.root)
-        bindingList.add(viewBinding)
         return this
     }
 
@@ -114,8 +118,10 @@ class ActionDialog constructor(
         list: List<String>,
         onButtonClick: (OnButtonClickListener<ActionDialog>.() -> Unit)? = null
     ): ActionDialog {
-        for (text in list) {
-            addAction(text, onButtonClick)
+        delay2Created {
+            for (text in list) {
+                addAction(text, onButtonClick)
+            }
         }
         return this
     }

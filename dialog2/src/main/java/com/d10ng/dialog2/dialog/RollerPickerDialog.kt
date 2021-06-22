@@ -51,34 +51,36 @@ open class RollerPickerDialog constructor(
         end: String = "",
         listener: (OnPickSelectListener<RollerPickerDialog>.() -> Unit)? = null
     ): RollerPickerDialog {
-        val viewBinding: ViewRollerPickerBinding = DataBindingUtil.inflate(
-            LayoutInflater.from(context),
-            R.layout.view_roller_picker, null, false
-        )
-        viewBinding.apply {
-            // 设置前后文本
-            startText = start
-            endText = end
-            picker.apply {
-                // 设置选项
-                displayedValues = list.toTypedArray()
-                minValue = 0
-                maxValue = list.size -1
-                // 设置选中
-                value = displayedValues.indexOf(select)
+        delay2Created {
+            val viewBinding: ViewRollerPickerBinding = DataBindingUtil.inflate(
+                LayoutInflater.from(context),
+                R.layout.view_roller_picker, null, false
+            )
+            viewBinding.apply {
+                // 设置前后文本
+                startText = start
+                endText = end
+                picker.apply {
+                    // 设置选项
+                    displayedValues = list.toTypedArray()
+                    minValue = 0
+                    maxValue = list.size -1
+                    // 设置选中
+                    value = displayedValues.indexOf(select)
+                }
             }
-        }
-        // 选择监听
-        viewBinding.picker.setOnValueChangedListener { picker, _, newVal ->
-            if (listener != null) {
-                val selectItemListener = OnPickSelectListener<RollerPickerDialog>()
-                selectItemListener.listener()
-                selectItemListener.select(this, key, newVal, picker.displayedValues[newVal])
+            // 选择监听
+            viewBinding.picker.setOnValueChangedListener { picker, _, newVal ->
+                if (listener != null) {
+                    val selectItemListener = OnPickSelectListener<RollerPickerDialog>()
+                    selectItemListener.listener()
+                    selectItemListener.select(this, key, newVal, picker.displayedValues[newVal])
+                }
             }
+            getCustomView().removeView(bindingMap[key]?.root)
+            getCustomView().addView(viewBinding.root)
+            bindingMap[key] = viewBinding
         }
-        getCustomView().removeView(bindingMap[key]?.root)
-        getCustomView().addView(viewBinding.root)
-        bindingMap[key] = viewBinding
         return this
     }
 
@@ -88,8 +90,10 @@ open class RollerPickerDialog constructor(
      * @return RollerPickerDialog
      */
     fun removePick(key: String): RollerPickerDialog {
-        getCustomView().removeView(bindingMap[key]?.root)
-        bindingMap.remove(key)
+        delay2Created {
+            getCustomView().removeView(bindingMap[key]?.root)
+            bindingMap.remove(key)
+        }
         return this
     }
 

@@ -8,6 +8,7 @@ import com.d10ng.dialog2.databinding.ViewActionButtonBinding
 import com.d10ng.dialog2.databinding.ViewContentBinding
 import com.d10ng.dialog2.databinding.ViewTitleBinding
 import com.d10ng.dialog2.impl.OnButtonClickListener
+import kotlinx.coroutines.*
 
 /**
  * 基础弹窗
@@ -52,6 +53,31 @@ open class BaseDialogFragment constructor(
 }
 
 /**
+ * 等待 Fragment 完成 ViewCreated
+ * @receiver T
+ * @param listener Function0<Unit>
+ */
+fun <T : BaseDialogFragment> T.delay2Created(listener: () -> Unit) {
+    if (view != null) {
+        listener.invoke()
+        return
+    }
+    val start = System.currentTimeMillis()
+    GlobalScope.launch {
+        while (view == null) {
+            delay(10)
+            if (System.currentTimeMillis() - start > 1000) {
+                println("BaseDialogFragment view 持续为 NULL，无法继续使用，操作任务已忽略。")
+                return@launch
+            }
+        }
+        withContext(Dispatchers.Main) {
+            listener.invoke()
+        }
+    }
+}
+
+/**
  * 设置标题
  * @receiver T
  * @param title String
@@ -62,8 +88,10 @@ fun <T : BaseDialogFragment> T.setTitle(
     title: String,
     textAlignment: Int = View.TEXT_ALIGNMENT_TEXT_START
 ): T {
-    getTitleView()?.titleText = title
-    getTitleView()?.txtTitle?.textAlignment = textAlignment
+    delay2Created {
+        getTitleView()?.titleText = title
+        getTitleView()?.txtTitle?.textAlignment = textAlignment
+    }
     return this
 }
 
@@ -78,7 +106,9 @@ fun <T : BaseDialogFragment> T.setTitle(
     titleId: Int,
     textAlignment: Int = View.TEXT_ALIGNMENT_TEXT_START
 ): T {
-    setTitle(resources.getString(titleId), textAlignment)
+    delay2Created {
+        setTitle(resources.getString(titleId), textAlignment)
+    }
     return this
 }
 
@@ -93,9 +123,11 @@ fun <T : BaseDialogFragment> T.setContent(
     content: String,
     textAlignment: Int = View.TEXT_ALIGNMENT_TEXT_START
 ): T {
-    getContentView()?.isHasContent = true
-    getContentView()?.contentText = content
-    getContentView()?.txtContent?.textAlignment = textAlignment
+    delay2Created {
+        getContentView()?.isHasContent = true
+        getContentView()?.contentText = content
+        getContentView()?.txtContent?.textAlignment = textAlignment
+    }
     return this
 }
 
@@ -109,7 +141,9 @@ fun <T : BaseDialogFragment> T.setContent(
     contentId: Int,
     textAlignment: Int = View.TEXT_ALIGNMENT_TEXT_START
 ): T {
-    setContent(resources.getString(contentId), textAlignment)
+    delay2Created {
+        setContent(resources.getString(contentId), textAlignment)
+    }
     return this
 }
 
@@ -119,7 +153,9 @@ fun <T : BaseDialogFragment> T.setContent(
  * @return T
  */
 fun <T : BaseDialogFragment> T.removeContent(): T {
-    getContentView()?.isHasContent = false
+    delay2Created {
+        getContentView()?.isHasContent = false
+    }
     return this
 }
 
@@ -134,16 +170,18 @@ fun <T : BaseDialogFragment> T.setButton0(
     text: String,
     onButtonClick: (OnButtonClickListener<T>.() -> Unit)? = null
 ): T {
-    getActionButtonView()?.apply {
-        isHasButton0 = true
-        button0Text = text
-        btn0.setOnClickListener {
-            if (onButtonClick == null) {
-                dismiss()
-            } else {
-                val clickBuilder = OnButtonClickListener<T>()
-                clickBuilder.onButtonClick()
-                clickBuilder.click(this@setButton0, 0)
+    delay2Created {
+        getActionButtonView()?.apply {
+            isHasButton0 = true
+            button0Text = text
+            btn0.setOnClickListener {
+                if (onButtonClick == null) {
+                    dismiss()
+                } else {
+                    val clickBuilder = OnButtonClickListener<T>()
+                    clickBuilder.onButtonClick()
+                    clickBuilder.click(this@setButton0, 0)
+                }
             }
         }
     }
@@ -161,7 +199,10 @@ fun <T : BaseDialogFragment> T.setButton0(
     textId: Int,
     onButtonClick: (OnButtonClickListener<T>.() -> Unit)? = null
 ): T {
-    return setButton0(resources.getString(textId), onButtonClick)
+    delay2Created {
+        setButton0(resources.getString(textId), onButtonClick)
+    }
+    return this
 }
 
 /**
@@ -170,8 +211,10 @@ fun <T : BaseDialogFragment> T.setButton0(
  * @return T
  */
 fun <T : BaseDialogFragment> T.removeButton0(): T {
-    getActionButtonView()?.apply {
-        isHasButton0 = false
+    delay2Created {
+        getActionButtonView()?.apply {
+            isHasButton0 = false
+        }
     }
     return this
 }
@@ -187,16 +230,18 @@ fun <T : BaseDialogFragment> T.setButton1(
     text: String,
     onButtonClick: (OnButtonClickListener<T>.() -> Unit)? = null
 ): T {
-    getActionButtonView()?.apply {
-        isHasButton1 = true
-        button1Text = text
-        btn1.setOnClickListener {
-            if (onButtonClick == null) {
-                dismiss()
-            } else {
-                val clickBuilder = OnButtonClickListener<T>()
-                clickBuilder.onButtonClick()
-                clickBuilder.click(this@setButton1, 0)
+    delay2Created {
+        getActionButtonView()?.apply {
+            isHasButton1 = true
+            button1Text = text
+            btn1.setOnClickListener {
+                if (onButtonClick == null) {
+                    dismiss()
+                } else {
+                    val clickBuilder = OnButtonClickListener<T>()
+                    clickBuilder.onButtonClick()
+                    clickBuilder.click(this@setButton1, 0)
+                }
             }
         }
     }
@@ -214,7 +259,10 @@ fun <T : BaseDialogFragment> T.setButton1(
     textId: Int,
     onButtonClick: (OnButtonClickListener<T>.() -> Unit)? = null
 ): T {
-    return setButton1(resources.getString(textId), onButtonClick)
+    delay2Created {
+        setButton1(resources.getString(textId), onButtonClick)
+    }
+    return this
 }
 
 /**
@@ -223,8 +271,10 @@ fun <T : BaseDialogFragment> T.setButton1(
  * @return T
  */
 fun <T : BaseDialogFragment> T.removeButton1(): T {
-    getActionButtonView()?.apply {
-        isHasButton1 = false
+    delay2Created {
+        getActionButtonView()?.apply {
+            isHasButton1 = false
+        }
     }
     return this
 }

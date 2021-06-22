@@ -29,13 +29,15 @@ class ProgressDialog constructor(
      * @return ProgressDialog
      */
     fun initView(): ProgressDialog {
-        getCustomView().removeAllViews()
-        viewBinding.apply {
-            isHasProgressText = false
-            progressText = "100%"
-            progressBar.isIndeterminate = true
+        delay2Created {
+            getCustomView().removeAllViews()
+            viewBinding.apply {
+                isHasProgressText = false
+                progressText = "100%"
+                progressBar.isIndeterminate = true
+            }
+            getCustomView().addView(viewBinding.root)
         }
-        getCustomView().addView(viewBinding.root)
         return this
     }
 
@@ -45,7 +47,9 @@ class ProgressDialog constructor(
      * @return ProgressDialog
      */
     fun setIsIndeterminate(value: Boolean): ProgressDialog {
-        viewBinding.progressBar.isIndeterminate = value
+        delay2Created {
+            viewBinding.progressBar.isIndeterminate = value
+        }
         return this
     }
 
@@ -55,7 +59,9 @@ class ProgressDialog constructor(
      * @return ProgressDialog
      */
     fun setIsShowProgressText(value: Boolean): ProgressDialog {
-        viewBinding.isHasProgressText = value
+        delay2Created {
+            viewBinding.isHasProgressText = value
+        }
         return this
     }
 
@@ -65,8 +71,10 @@ class ProgressDialog constructor(
      * @return ProgressDialog
      */
     fun setMax(value: Int): ProgressDialog {
-        viewBinding.progressBar.max = value
-        updateProgressText()
+        delay2Created {
+            viewBinding.progressBar.max = value
+            updateProgressText()
+        }
         return this
     }
 
@@ -76,8 +84,10 @@ class ProgressDialog constructor(
      * @return ProgressDialog
      */
     fun setCurrentProgress(value: Int): ProgressDialog {
-        viewBinding.progressBar.progress = value
-        updateProgressText()
+        delay2Created {
+            viewBinding.progressBar.progress = value
+            updateProgressText()
+        }
         return this
     }
 

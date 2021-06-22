@@ -48,28 +48,32 @@ open class DateRollerPickerDialog constructor(
      * @return [DateRollerPickerDialog]
      */
     fun normalBuilder(): DateRollerPickerDialog {
-        setYearPickList()
-        setMonthPickList()
-        setDayPickList()
+        delay2Created {
+            setYearPickList()
+            setMonthPickList()
+            setDayPickList()
+        }
         return this
     }
 
     /** 日期选中监听器 */
     private val datePickDialogListener: (OnPickSelectListener<RollerPickerDialog>.() -> Unit) = {
         onSelect { _, key, _, _ ->
-            val selectYear = getYearPickValue()
-            val selectMonth = getMonthPickValue()
-            val selectDay = getDayPickValue()
-            when(key) {
-                keyY -> {
-                    // 重新选中月份
-                    val newSelectMonth = updateMonthList(selectYear, selectMonth)
-                    // 重新选择日
-                    updateDayList(selectYear, newSelectMonth, selectDay)
-                }
-                keyM -> {
-                    // 重新选择日
-                    updateDayList(selectYear, selectMonth, selectDay)
+            delay2Created {
+                val selectYear = getYearPickValue()
+                val selectMonth = getMonthPickValue()
+                val selectDay = getDayPickValue()
+                when(key) {
+                    keyY -> {
+                        // 重新选中月份
+                        val newSelectMonth = updateMonthList(selectYear, selectMonth)
+                        // 重新选择日
+                        updateDayList(selectYear, newSelectMonth, selectDay)
+                    }
+                    keyM -> {
+                        // 重新选择日
+                        updateDayList(selectYear, selectMonth, selectDay)
+                    }
                 }
             }
         }
@@ -123,12 +127,14 @@ open class DateRollerPickerDialog constructor(
      * @return [DateRollerPickerDialog]
      */
     fun setYearPickList(start: String = "", end: String = ""): DateRollerPickerDialog {
-        yearStartStr = start
-        yearEndStr = end
-        val yearList = getYearList()
-        if (isHasKey(keyY)) removePick(keyY)
-        addPick(keyY, "${getTimeYear(selectTime)}", yearList,
-            start, end, datePickDialogListener)
+        delay2Created {
+            yearStartStr = start
+            yearEndStr = end
+            val yearList = getYearList()
+            if (isHasKey(keyY)) removePick(keyY)
+            addPick(keyY, "${getTimeYear(selectTime)}", yearList,
+                start, end, datePickDialogListener)
+        }
         return this
     }
 
@@ -139,12 +145,14 @@ open class DateRollerPickerDialog constructor(
      * @return [DateRollerPickerDialog]
      */
     fun setMonthPickList(start: String = "", end: String = ""): DateRollerPickerDialog {
-        monthStartStr = start
-        monthEndStr = end
-        val monthList = getMonthList(getTimeYear(selectTime))
-        if (isHasKey(keyM)) removePick(keyM)
-        addPick(keyM, "${getTimeMonth(selectTime)}", monthList,
-            monthStartStr, monthEndStr, datePickDialogListener)
+        delay2Created {
+            monthStartStr = start
+            monthEndStr = end
+            val monthList = getMonthList(getTimeYear(selectTime))
+            if (isHasKey(keyM)) removePick(keyM)
+            addPick(keyM, "${getTimeMonth(selectTime)}", monthList,
+                monthStartStr, monthEndStr, datePickDialogListener)
+        }
         return this
     }
 
@@ -155,12 +163,14 @@ open class DateRollerPickerDialog constructor(
      * @return [DateRollerPickerDialog]
      */
     fun setDayPickList(start: String = "", end: String = ""): DateRollerPickerDialog {
-        dayStartStr = start
-        dayEndStr = end
-        val dayList = getDayList(getTimeYear(selectTime), getTimeMonth(selectTime))
-        if (isHasKey(keyD)) removePick(keyD)
-        addPick(keyD, "${getTimeDay(selectTime)}", dayList,
-            dayStartStr, dayEndStr)
+        delay2Created {
+            dayStartStr = start
+            dayEndStr = end
+            val dayList = getDayList(getTimeYear(selectTime), getTimeMonth(selectTime))
+            if (isHasKey(keyD)) removePick(keyD)
+            addPick(keyD, "${getTimeDay(selectTime)}", dayList,
+                dayStartStr, dayEndStr)
+        }
         return this
     }
 
